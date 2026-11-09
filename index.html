@@ -1,53 +1,148 @@
-:root{--bg:#090b16;--panel:#131629;--panel2:#191d34;--line:#303653;--text:#f8f7ff;--muted:#b7bad0;--purple:#a78bfa;--pink:#c084fc;--green:#86efac} *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--text);font-family:Tahoma,Arial,sans-serif;line-height:1.7} a{color:inherit;text-decoration:none} .wrap{width:min(1100px,92%);margin:auto} header{position:sticky;top:0;z-index:10;background:#090b16ed;backdrop-filter:blur(12px);border-bottom:1px solid #252a40} .nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px} .brand{font-size:22px;font-weight:800;letter-spacing:-.5px}.brand b{color:var(--purple)} .navlinks{display:flex;gap:24px;color:var(--muted);font-size:14px} .navlinks a:hover{color:white} .navbtn,.primary{border:0;border-radius:13px;padding:12px 20px;background:linear-gradient(100deg,#7c3aed,#a855f7);color:white;font-weight:700;font-size:15px;cursor:pointer} .hero{text-align:center;padding:78px 0 48px;background:radial-gradient(ellipse at 50% 0%,#302052 0%,#111027 35%,var(--bg) 75%)} .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border:1px solid #59417d;background:#211a38;border-radius:40px;color:#d8c8ff;font-size:13px} h1{font-size:clamp(34px,6vw,58px);line-height:1.35;max-width:850px;margin:22px auto 14px} h1 span{color:var(--purple)} .hero p{max-width:650px;margin:0 auto 26px;color:var(--muted);font-size:clamp(16px,2.5vw,19px)} .note{font-size:12px;color:#a7a9bc;margin-top:13px} .builder{max-width:790px;margin:18px auto 76px;padding:clamp(20px,4vw,34px);background:linear-gradient(145deg,#171a30,#101323);border:1px solid var(--line);border-radius:24px;box-shadow:0 25px 70px #0005} .builder h2{font-size:25px;margin:0 0 5px} .sub{color:var(--muted);font-size:14px;margin:0 0 24px} label{display:block;margin:18px 0 8px;font-weight:700;font-size:14px} textarea,select{width:100%;border:1px solid #454b69;border-radius:12px;background:#0b0e1d;color:white;padding:14px;font:inherit;font-size:15px;outline:none} textarea{min-height:130px;resize:vertical} textarea:focus,select:focus{border-color:var(--purple);box-shadow:0 0 0 3px #a78bfa22} .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px} .primary{width:100%;margin-top:22px;padding:15px} .primary:disabled{opacity:.6;cursor:wait} .result{display:none;margin-top:22px;padding:18px;border-radius:14px;background:#0c1020;border:1px solid #3c4261} .result h3{margin:0 0 12px;color:#d9caff} .scene{padding:12px;margin:10px 0;border:1px solid #303653;border-radius:10px;background:#151a2e} .scene strong{color:#c4b5fd} .features{padding:10px 0 75px;text-align:center} .features h2{font-size:30px;margin-bottom:8px} .features>p{color:var(--muted);margin-top:0} .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px;text-align:right} .card{background:var(--panel);border:1px solid #292f49;border-radius:17px;padding:22px} .ico{font-size:26px}.card h3{margin:8px 0;color:#d8c8ff;font-size:18px}.card p{margin:0;color:var(--muted);font-size:14px} footer{border-top:1px solid #252a40;padding:24px 0;text-align:center;color:#9296ad;font-size:13px} .toast{color:var(--green);font-size:13px;margin-top:10px;display:none} @media(max-width:650px){.navlinks{display:none}.hero{padding:58px 0 35px}.grid,.cards{grid-template-columns:1fr}.builder{margin-bottom:55px}.navbtn{padding:10px 13px;font-size:13px}} 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090b16">
+  <meta name="description" content="هلا AI Video — حوّل فكرتك إلى خطة فيديو إبداعية بالذكاء الاصطناعي.">
+  <title>هلا AI Video | اصنع فيديوك</title>
+  <style>
+    :root{--bg:#090b16;--panel:#131629;--panel2:#191d34;--line:#303653;--text:#f8f7ff;--muted:#b7bad0;--purple:#a78bfa;--pink:#c084fc;--green:#86efac}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Tahoma,Arial,sans-serif;line-height:1.7}
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(1100px,92%);margin:auto}
+    header{position:sticky;top:0;z-index:10;background:#090b16ed;backdrop-filter:blur(12px);border-bottom:1px solid #252a40}
+    .nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{font-size:22px;font-weight:800;letter-spacing:-.5px}.brand b{color:var(--purple)}
+    .navlinks{display:flex;gap:24px;color:var(--muted);font-size:14px}
+    .navlinks a:hover{color:white}
+    .navbtn,.primary{border:0;border-radius:13px;padding:12px 20px;background:linear-gradient(100deg,#7c3aed,#a855f7);color:white;font-weight:700;font-size:15px;cursor:pointer}
+    .hero{text-align:center;padding:78px 0 48px;background:radial-gradient(ellipse at 50% 0%,#302052 0%,#111027 35%,var(--bg) 75%)}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border:1px solid #59417d;background:#211a38;border-radius:40px;color:#d8c8ff;font-size:13px}
+    h1{font-size:clamp(34px,6vw,58px);line-height:1.35;max-width:850px;margin:22px auto 14px}
+    h1 span{color:var(--purple)}
+    .hero p{max-width:650px;margin:0 auto 26px;color:var(--muted);font-size:clamp(16px,2.5vw,19px)}
+    .note{font-size:12px;color:#a7a9bc;margin-top:13px}
+    .builder{max-width:790px;margin:18px auto 76px;padding:clamp(20px,4vw,34px);background:linear-gradient(145deg,#171a30,#101323);border:1px solid var(--line);border-radius:24px;box-shadow:0 25px 70px #0005}
+    .builder h2{font-size:25px;margin:0 0 5px}
+    .sub{color:var(--muted);font-size:14px;margin:0 0 24px}
+    label{display:block;margin:18px 0 8px;font-weight:700;font-size:14px}
+    textarea,select{width:100%;border:1px solid #454b69;border-radius:12px;background:#0b0e1d;color:white;padding:14px;font:inherit;font-size:15px;outline:none}
+    textarea{min-height:130px;resize:vertical}
+    textarea:focus,select:focus{border-color:var(--purple);box-shadow:0 0 0 3px #a78bfa22}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .primary{width:100%;margin-top:22px;padding:15px}
+    .primary:disabled{opacity:.6;cursor:wait}
+    .result{display:none;margin-top:22px;padding:18px;border-radius:14px;background:#0c1020;border:1px solid #3c4261}
+    .result h3{margin:0 0 12px;color:#d9caff}
+    .scene{padding:12px;margin:10px 0;border:1px solid #303653;border-radius:10px;background:#151a2e}
+    .scene strong{color:#c4b5fd}
+    .features{padding:10px 0 75px;text-align:center}
+    .features h2{font-size:30px;margin-bottom:8px}
+    .features>p{color:var(--muted);margin-top:0}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px;text-align:right}
+    .card{background:var(--panel);border:1px solid #292f49;border-radius:17px;padding:22px}
+    .ico{font-size:26px}.card h3{margin:8px 0;color:#d8c8ff;font-size:18px}.card p{margin:0;color:var(--muted);font-size:14px}
+    footer{border-top:1px solid #252a40;padding:24px 0;text-align:center;color:#9296ad;font-size:13px}
+    .toast{color:var(--green);font-size:13px;margin-top:10px;display:none}
+    @media(max-width:650px){.navlinks{display:none}.hero{padding:58px 0 35px}.grid,.cards{grid-template-columns:1fr}.builder{margin-bottom:55px}.navbtn{padding:10px 13px;font-size:13px}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#home">هلا <b>AI Video</b></a>
+    <nav class="navlinks" aria-label="القائمة الرئيسية">
+      <a href="#home">الرئيسية</a><a href="#create">إنشاء فيديو</a><a href="#features">المميزات</a>
+    </nav>
+    <a class="navbtn" href="#create">ابدأ الآن</a>
+  </div>
+</header>
 
-هلا AI Video الرئيسيةإنشاء فيديوالمميزات ابدأ الآن 
+<main id="home">
+  <section class="hero">
+    <div class="wrap">
+      <div class="pill">✨ مساحة إبداعك تبدأ من هنا</div>
+      <h1>حوّل أفكارك إلى <span>خطط فيديو</span> مميزة بالذكاء الاصطناعي</h1>
+      <p>اكتب فكرتك، وحدد أسلوب الفيديو، واحصل على تصور أولي للمشاهد يساعدك على بدء صناعة محتواك.</p>
+      <a class="navbtn" href="#create">ابدأ إنشاء فكرتك</a>
+      <div class="note">نسخة الإطلاق الأولى — توليد ملفات الفيديو الفعلية قيد التطوير.</div>
+    </div>
+  </section>
 
-✨ مساحة إبداعك تبدأ من هنا
+  <section class="wrap builder" id="create">
+    <h2>🎬 جهّز فكرة فيديوك</h2>
+    <p class="sub">اكتب وصفًا واضحًا للفكرة، وسنرتبه لك في مشاهد مبدئية.</p>
+    <label for="idea">ما فكرة الفيديو؟</label>
+    <textarea id="idea" maxlength="1200" placeholder="مثال: احكِ قصة شاب بدأ مشروعه من الصفر حتى حقق حلمه..."></textarea>
+    <div class="grid">
+      <div>
+        <label for="style">نوع الفيديو</label>
+        <select id="style">
+          <option>سينمائي واقعي</option><option>تعليمي وتوضيحي</option><option>قصة قصيرة</option><option>إعلاني وتسويقي</option><option>وثائقي</option>
+        </select>
+      </div>
+      <div>
+        <label for="ratio">مقاس الفيديو</label>
+        <select id="ratio">
+          <option value="رأسي 9:16">رأسي 9:16 — ريلز وتيك توك</option>
+          <option value="أفقي 16:9">أفقي 16:9 — يوتيوب</option>
+          <option value="مربع 1:1">مربع 1:1</option>
+        </select>
+      </div>
+    </div>
+    <button class="primary" id="make" type="button">قسّم الفكرة إلى مشاهد</button>
+    <div class="toast" id="toast">تم إعداد مخططك المبدئي بنجاح.</div>
+    <div class="result" id="result" aria-live="polite"></div>
+  </section>
 
-حوّل أفكارك إلى خطط فيديو مميزة بالذكاء الاصطناعي
+  <section class="wrap features" id="features">
+    <h2>من الفكرة إلى الفيديو</h2>
+    <p>نبني تجربة بسيطة تساعد صناع المحتوى على تحويل أفكارهم إلى فيديو.</p>
+    <div class="cards">
+      <article class="card"><div class="ico">✍️</div><h3>اكتب فكرتك</h3><p>ابدأ بوصف بسيط للفيديو الذي تريد إنشاءه.</p></article>
+      <article class="card"><div class="ico">🎞️</div><h3>رتّب المشاهد</h3><p>حوّل الفكرة إلى تسلسل واضح للمشاهد واللقطات.</p></article>
+      <article class="card"><div class="ico">🚀</div><h3>توليد الفيديو</h3><p>الخطوة القادمة هي ربط المنصة بمحرك فيديو يعمل بالذكاء الاصطناعي.</p></article>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap">© 2026 هلا AI Video — جميع الحقوق محفوظة</div></footer>
 
-اكتب فكرتك، وحدد أسلوب الفيديو، واحصل على تصور أولي للمشاهد يساعدك على بدء صناعة محتواك.
-
-ابدأ إنشاء فكرتك 
-
-نسخة الإطلاق الأولى — توليد ملفات الفيديو الفعلية قيد التطوير.
-
-🎬 جهّز فكرة فيديوك
-
-اكتب وصفًا واضحًا للفكرة، وسنرتبه لك في مشاهد مبدئية.
-
-ما فكرة الفيديو؟ 
-
-نوع الفيديو سينمائي واقعيتعليمي وتوضيحيقصة قصيرةإعلاني وتسويقيوثائقي 
-
-مقاس الفيديو رأسي 9:16 — ريلز وتيك توكأفقي 16:9 — يوتيوبمربع 1:1 
-
-قسّم الفكرة إلى مشاهد 
-
-تم إعداد مخططك المبدئي بنجاح.
-
-من الفكرة إلى الفيديو
-
-نبني تجربة بسيطة تساعد صناع المحتوى على تحويل أفكارهم إلى فيديو.
-
-✍️
-
-اكتب فكرتك
-
-ابدأ بوصف بسيط للفيديو الذي تريد إنشاءه.
-
-🎞️
-
-رتّب المشاهد
-
-حوّل الفكرة إلى تسلسل واضح للمشاهد واللقطات.
-
-🚀
-
-توليد الفيديو
-
-الخطوة القادمة هي ربط المنصة بمحرك فيديو يعمل بالذكاء الاصطناعي.
-
-© 2026 هلا AI Video — جميع الحقوق محفوظة
-
-const $ = id => document.getElementById(id); $('make').addEventListener('click', () => { const idea = $('idea').value.trim(); if (!idea) { alert('من فضلك اكتب فكرة الفيديو أولًا.'); $('idea').focus(); return; } const sentences = idea.split(/[.!؟?\n]+/).map(s => s.trim()).filter(Boolean); const chunks = sentences.length > 1 ? sentences : [idea]; const scenes = chunks.slice(0, 6); const result = $('result'); result.replaceChildren(); const title = document.createElement('h3'); title.textContent = 'المخطط المبدئي لفيديوك'; result.appendChild(title); const info = document.createElement('p'); info.textContent = 'الأسلوب: ' + $('style').value + ' — المقاس: ' + $('ratio').value; result.appendChild(info); scenes.forEach((line, i) => { const item = document.createElement('div'); item.className = 'scene'; const strong = document.createElement('strong'); strong.textContent = 'المشهد ' + (i + 1); const p = document.createElement('p'); p.textContent = line; item.append(strong, p); result.appendChild(item); }); const disclaimer = document.createElement('p'); disclaimer.className = 'note'; disclaimer.textContent = 'هذا مخطط نصي مبدئي فقط، وليس ملف فيديو مولّدًا. سنضيف التوليد الحقيقي بعد ربط خدمة الفيديو والخادم الآمن.'; result.appendChild(disclaimer); result.style.display = 'block'; $('toast').style.display = 'block'; }); 
+<script>
+const $ = id => document.getElementById(id);
+$('make').addEventListener('click', () => {
+  const idea = $('idea').value.trim();
+  if (!idea) { alert('من فضلك اكتب فكرة الفيديو أولًا.'); $('idea').focus(); return; }
+  const sentences = idea.split(/[.!؟?\n]+/).map(s => s.trim()).filter(Boolean);
+  const chunks = sentences.length > 1 ? sentences : [idea];
+  const scenes = chunks.slice(0, 6);
+  const result = $('result');
+  result.replaceChildren();
+  const title = document.createElement('h3');
+  title.textContent = 'المخطط المبدئي لفيديوك';
+  result.appendChild(title);
+  const info = document.createElement('p');
+  info.textContent = 'الأسلوب: ' + $('style').value + ' — المقاس: ' + $('ratio').value;
+  result.appendChild(info);
+  scenes.forEach((line, i) => {
+    const item = document.createElement('div');
+    item.className = 'scene';
+    const strong = document.createElement('strong');
+    strong.textContent = 'المشهد ' + (i + 1);
+    const p = document.createElement('p');
+    p.textContent = line;
+    item.append(strong, p);
+    result.appendChild(item);
+  });
+  const disclaimer = document.createElement('p');
+  disclaimer.className = 'note';
+  disclaimer.textContent = 'هذا مخطط نصي مبدئي فقط، وليس ملف فيديو مولّدًا. سنضيف التوليد الحقيقي بعد ربط خدمة الفيديو والخادم الآمن.';
+  result.appendChild(disclaimer);
+  result.style.display = 'block';
+  $('toast').style.display = 'block';
+});
+</script>
+</body>
+</html>
