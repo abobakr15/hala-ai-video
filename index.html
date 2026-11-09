@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>هلا AI Video | اصنع فيديوك بالذكاء الاصطناعي</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#090b16;color:white;font-family:Arial,sans-serif}
+header{padding:22px 7%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #24263a}
+.logo{font-size:25px;font-weight:bold;color:#a78bfa}
+.logo span{color:#fff}
+nav a{color:#ccc;text-decoration:none;margin:0 10px;font-size:14px}
+.hero{text-align:center;padding:75px 18px 45px;background:radial-gradient(ellipse at top,#30205b 0%,#090b16 65%)}
+.tag{color:#c4b5fd;background:#241b40;border:1px solid #554080;padding:9px 17px;border-radius:30px;display:inline-block;font-size:13px}
+h1{font-size:42px;line-height:1.4;margin:24px auto 12px;max-width:750px}
+h1 span{color:#a78bfa}
+.hero p{color:#b8bbcc;font-size:17px;line-height:1.9;max-width:600px;margin:15px auto 28px}
+button{background:linear-gradient(90deg,#7c3aed,#a855f7);color:white;border:0;padding:15px 28px;border-radius:12px;font-size:16px;font-weight:bold;cursor:pointer}
+button:hover{opacity:.9}
+.panel{max-width:720px;margin:15px auto 65px;padding:25px;background:#131627;border:1px solid #30334b;border-radius:20px;text-align:right}
+.panel h2{margin-top:0}
+label{display:block;margin:18px 0 9px;color:#ddd}
+textarea,select{width:100%;background:#090d1b;border:1px solid #363b55;color:white;border-radius:10px;padding:14px;font-size:15px}
+textarea{height:120px;resize:vertical}
+select{margin-bottom:12px}
+.panel button{width:100%;margin-top:14px}
+.features{padding:25px 7% 65px;text-align:center}
+.features h2{font-size:29px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin-top:28px}
+.card{background:#131627;border:1px solid #292d43;border-radius:15px;padding:23px;text-align:right}
+.card h3{color:#c4b5fd}
+.card p{color:#aaa;line-height:1.8;font-size:14px}
+footer{text-align:center;padding:25px;color:#85899d;border-top:1px solid #24263a}
+#result{display:none;background:#20213b;padding:15px;border-radius:10px;margin-top:15px;line-height:1.8}
+@media(max-width:600px){h1{font-size:31px}nav{display:none}.hero{padding-top:55px}}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">هلا <span>AI Video</span></div>
+<nav><a href="#home">الرئيسية</a><a href="#create">اصنع فيديو</a><a href="#features">المميزات</a></nav>
+</header>
+
+<section class="hero" id="home">
+<div class="tag">✨ عالم جديد لصناعة الفيديو</div>
+<h1>حوّل أفكارك إلى <span>فيديوهات مذهلة</span> بالذكاء الاصطناعي</h1>
+<p>اكتب فكرتك ودع هلا AI Video يساعدك في تحويلها إلى مشاهد فيديو إبداعية.</p>
+<button onclick="document.getElementById('create').scrollIntoView({behavior:'smooth'})">ابدأ صناعة فيديوك</button>
+</section>
+
+<section class="panel" id="create">
+<h2>🎬 اصنع فيديوك الأول</h2>
+<label>اكتب فكرة الفيديو</label>
+<textarea id="idea" placeholder="مثلاً: قصة شاب بدأ من الصفر وحقق حلمه..."></textarea>
+<label>نوع الفيديو</label>
+<select id="type">
+<option>سينمائي واقعي</option>
+<option>تعليمي</option>
+<option>قصة قصيرة</option>
+<option>تسويقي</option>
+<option>وثائقي</option>
+</select>
+<label>مقاس الفيديو</label>
+<select id="size">
+<option>رأسي 9:16 - تيك توك وريلز</option>
+<option>أفقي 16:9 - يوتيوب</option>
+<option>مربع 1:1</option>
+</select>
+<button onclick="createPlan()">قسّم فكرتي إلى مشاهد</button>
+<div id="result"></div>
+</section>
+
+<section class="features" id="features">
+<h2>اكتشف إمكانيات هلا AI Video</h2>
+<div class="cards">
+<div class="card"><h3>🎥 فيديو بالذكاء الاصطناعي</h3><p>هدفنا تحويل النصوص إلى مشاهد فيديو حقيقية مولّدة بالذكاء الاصطناعي.</p></div>
+<div class="card"><h3>🌍 اللغة العربية</h3><p>تجربة عربية سهلة وواضحة لصناع المحتوى.</p></div>
+<div class="card"><h3>⚡ صناعة سهلة</h3><p>اكتب فكرتك وابدأ تجهيز مشروع الفيديو الخاص بك.</p></div>
+</div>
+</section>
+
+<footer>© 2026 هلا AI Video - جميع الحقوق محفوظة</footer>
+
+<script>
+function createPlan(){
+let idea=document.getElementById('idea').value.trim();
+let result=document.getElementById('result');
+if(!idea){alert('اكتب فكرة الفيديو أولاً');return;}
+result.style.display='block';
+result.innerHTML='<strong>تم استلام فكرتك بنجاح! 🎉</strong><br><br>'+idea+'<br><br>نوع الفيديو: '+document.getElementById('type').value+'<br>المقاس: '+document.getElementById('size').value+'<br><br>هذه واجهة أولية. سنربطها بمحرك توليد الفيديو الحقيقي في المرحلة التالية.';
+}
+</script>
+</body>
+</html>
