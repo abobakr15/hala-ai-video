@@ -144,5 +144,71 @@ $('make').addEventListener('click', () => {
   $('toast').style.display = 'block';
 });
 </script>
+  <script type="module">
+import { supabase } from './supabase.js';
+
+const panel = document.createElement('section');
+panel.style.cssText = 'max-width:600px;margin:25px auto;padding:20px;border:1px solid #ccc;border-radius:14px;direction:rtl;text-align:right';
+
+panel.innerHTML = `
+  <h2>حسابك في هلا AI Video</h2>
+  <input id="halaEmail" type="email" placeholder="البريد الإلكتروني" style="width:100%;padding:12px;margin:8px 0">
+  <input id="halaPassword" type="password" placeholder="كلمة المرور" style="width:100%;padding:12px;margin:8px 0">
+  <button id="halaSignup">إنشاء حساب</button>
+  <button id="halaLogin">تسجيل الدخول</button>
+  <button id="halaLogout">تسجيل الخروج</button>
+  <hr>
+  <button id="halaSave">حفظ فكرة الفيديو</button>
+  <p id="halaMessage">سجّل حسابك لحفظ مشاريعك.</p>
+`;
+
+document.body.appendChild(panel);
+
+const message = document.getElementById('halaMessage');
+
+document.getElementById('halaSignup').onclick = async () => {
+  const email = document.getElementById('halaEmail').value.trim();
+  const password = document.getElementById('halaPassword').value;
+  const { error } = await supabase.auth.signUp({ email, password });
+  message.textContent = error ? error.message : 'تم إنشاء الحساب. راجع بريدك الإلكتروني إذا طُلب تأكيده.';
+};
+
+document.getElementById('halaLogin').onclick = async () => {
+  const email = document.getElementById('halaEmail').value.trim();
+  const password = document.getElementById('halaPassword').value;
+  const { error } = await supabase.auth.signInWithPassword({ email, password });
+  message.textContent = error ? error.message : 'تم تسجيل الدخول بنجاح.';
+};
+
+document.getElementById('halaLogout').onclick = async () => {
+  const { error } = await supabase.auth.signOut();
+  message.textContent = error ? error.message : 'تم تسجيل الخروج.';
+};
+
+document.getElementById('halaSave').onclick = async () => {
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) {
+    message.textContent = 'سجّل الدخول أولًا.';
+    return;
+  }
+
+  const idea = document.getElementById('idea').value.trim();
+  if (!idea) {
+    message.textContent = 'اكتب فكرة الفيديو أولًا.';
+    return;
+  }
+
+  const { error } = await supabase.from('projects').insert({
+    user_id: user.id,
+    title: idea.slice(0, 80),
+    idea: idea,
+    video_style: document.getElementById('style').value,
+    aspect_ratio: document.getElementById('ratio').value,
+    status: 'draft'
+  });
+
+  message.textContent = error ? error.message : 'تم حفظ مشروعك بنجاح!';
+};
+  </script>
 </body>
 </html>
